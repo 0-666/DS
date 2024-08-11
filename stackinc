@@ -1,0 +1,73 @@
+#include <stdio.h>
+
+int top = -1;
+int stack[10];
+
+void push();
+void pop();
+void peep();
+void disp();
+
+int main() {
+    int n = 0;
+
+    while (n != 5) {
+        printf("\nEnter your choice: 1:push 2:pop 3:peep 4:display all 5:exit \n");
+        scanf("%d", &n);
+        switch (n) {
+            case 1:
+                push();
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                peep();
+                break;
+            case 4:
+                disp();
+                break;
+            case 5:
+                printf("\nExit");
+                break;
+            default:
+                printf("\nInvalid choice");
+                break;
+        }
+    }
+
+    return 0;
+}
+
+void push() {
+    if (top == 9) {
+        printf("\nOverflow");
+    } else {
+        top++;
+        printf("\nEnter an element\n");
+        scanf("%d", &stack[top]);
+    }
+}
+
+void pop() {
+    if (top == -1) {
+        printf("\nUnderflow");
+    } else {
+        printf("\nstack[%d]=%d element removed", top, stack[top]);
+        top--;
+    }
+}
+
+void peep() {
+    if (top >= 0) {
+        printf("\nstack[%d]=%d", top, stack[top]);
+    } else {
+        printf("\nEmpty");
+    }
+}
+
+void disp() {
+    for (int i = 0; i <= top; i++) {
+        printf("\nstack[%d]=%d", i, stack[i]);
+    }
+}
